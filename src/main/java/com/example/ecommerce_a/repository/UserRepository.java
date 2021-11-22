@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
@@ -29,9 +29,9 @@ public class UserRepository {
 	 * @param password
 	 * @return　メールアドレスとパスワードが一致した施設を取得する
 	 */
-	public User findByEmailAndPassword(User user) {
+	public User findByEmailAndPassword(String email, String password) {
 		String sql = "SELECT * FROM " + TABLE_NAME + " WHERE email=:email AND password=:password";
-		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
+		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email).addValue("password", password);
 		
 		List<User> userList = template.query(sql, param, USER_ROW_MAPPER);
 		if (userList.size() == 0) {
