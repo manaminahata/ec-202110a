@@ -13,10 +13,10 @@ import com.example.ecommerce_a.repository.ItemRepository;
 @Transactional
 public class ItemService {
 	@Autowired
-	private ItemRepository repository;
+	private ItemRepository itemRepository;
 	
 	public List<Item> showList(){
-		List<Item> itemList = repository.findAll();
+		List<Item> itemList = itemRepository.findAll();
 		return itemList;
 	}
 	
