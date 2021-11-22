@@ -1,4 +1,9 @@
+create database "ec-202110a";
+
+
 DROP TABLE IF EXISTS items;
+
+
 
 CREATE TABLE items(
 id serial primary key,
