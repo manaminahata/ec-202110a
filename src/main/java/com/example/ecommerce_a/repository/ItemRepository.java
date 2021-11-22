@@ -14,7 +14,7 @@ public class ItemRepository {
 	@Autowired
 	private NamedParameterJdbcTemplate template;
 	
-	private final RowMapper<Item> USER_ROW_MAPPER =
+	private final RowMapper<Item> ITEM_ROW_MAPPER =
 			new BeanPropertyRowMapper<>(Item.class);
 	
 	private final String TABLE_NAME = "items";
