@@ -16,8 +16,8 @@ public class LoginService {
 	 * @param user
 	 * @return　
 	 */
-	public User login(User user) {
-		user = userRepository.findByEmailAndPassword(user);
+	public User login(String email, String password) {
+		User user = userRepository.findByEmailAndPassword(email, password);
 		return user;
 	}
 }
