@@ -30,7 +30,7 @@ public class UserRepository {
 	 * @return　メールアドレスとパスワードが一致した施設を取得する
 	 */
 	public User findByEmailAndPassword(User user) {
-		String sql = "SELECT * FROM users WHERE email=:email AND password=:password";
+		String sql = "SELECT * FROM " + TABLE_NAME + " WHERE email=:email AND password=:password";
 		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
 		
 		List<User> userList = template.query(sql, param, USER_ROW_MAPPER);
