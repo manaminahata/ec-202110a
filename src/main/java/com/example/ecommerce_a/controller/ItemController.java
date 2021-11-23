@@ -18,7 +18,7 @@ public class ItemController {
 	
 	
 	
-	@RequestMapping("")
+	@RequestMapping("/item_list_pizza.html")
 	public String showList(Model model) {
 		List<Item> itemList = itemService.showList();
 		model.addAttribute("itemList",itemList);
