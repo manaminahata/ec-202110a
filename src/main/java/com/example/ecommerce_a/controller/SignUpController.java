@@ -37,7 +37,7 @@ public class SignUpController {
 			return "sign-up";
 		}
 
-		if(confirmationPassword.equals(form.getPassword())) {
+		if(!confirmationPassword.equals(form.getPassword())) {
 			model.addAttribute("passMessage", "パスワードと確認用パスワードが一致していません");
 			return "sign-up";
 		}
