@@ -61,7 +61,7 @@ public class LoginController {
 	 * ログアウト用のメソッドを定義
 	 * @return
 	 */
-	@RequestMapping("/item_list_pizza.html")
+	@RequestMapping("/item_list")
 	public String logout() {
 		session.invalidate();
 		return "redirect:/";
