@@ -11,7 +11,7 @@ import com.example.ecommerce_a.domain.Item;
 import com.example.ecommerce_a.service.ItemService;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/shop")
 public class ItemController {
 	@Autowired
 	private ItemService itemService;

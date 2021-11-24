@@ -66,16 +66,17 @@
           "
         >
           <div class="well">
-            <form method="post" action="item_list_pizza.html">
+            <form method="post" action="item_list.html" th:action="@{/shop/login-result}">
               <fieldset>
                 <legend>ログイン</legend>
-                <label class="control-label" style="color: red" for="inputError"
-                  >メールアドレス、またはパスワードが間違っています</label
+                <label class="control-label" style="color: red" for="inputError" th:text="${errorMessage}"
+                  >ダミー</label
                 >
                 <div class="form-group">
                   <label for="inputEmail">メールアドレス:</label>
                   <input
                     type="text"
+                    name="email"
                     id="inputEmail"
                     class="form-control"
                     placeholder="Email"
@@ -85,6 +86,7 @@
                   <label for="inputPassword">パスワード:</label>
                   <input
                     type="text"
+                    name="password"
                     id="inputPassword"
                     class="form-control"
                     placeholder="Password"
