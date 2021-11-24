@@ -19,7 +19,6 @@ public class ItemController {
 	@RequestMapping("")
 	public String showList(Model model) {
 		List<Item> itemList = itemService.showList();
-		System.out.println(itemList);
 		model.addAttribute("itemList",itemList);
 		return "item_list";
 	}
@@ -28,7 +27,6 @@ public class ItemController {
 	public String searchItemByName(String searchingName,Model model) {
 		System.out.println("検索ワード："+searchingName);
 		List<Item> itemList = itemService.searchByName(searchingName);
-		System.out.println(itemList.size());
 		if(itemList.size() == 0) {
 			itemList = itemService.showList();
 			model.addAttribute("searchMessage", "該当する商品がありません");
