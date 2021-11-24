@@ -13,7 +13,7 @@ import com.example.ecommerce_a.form.LoginForm;
 import com.example.ecommerce_a.service.LoginService;
 
 @Controller
-@RequestMapping("/login.html")
+@RequestMapping("/shop")
 public class LoginController {
 	@Autowired
 	private LoginService loginService;
@@ -34,12 +34,12 @@ public class LoginController {
 	 * ログイン画面を表示するメソッド
 	 * return login.html
 	 */
-	@RequestMapping("")
+	@RequestMapping("/login")
 	public String toLogin() {
 		return "login";
 	}
 	
-	@RequestMapping("/result")
+	@RequestMapping("/login-result")
 	public String login(LoginForm form,  Model model) {
 		User user = loginService.login(form.getEmail(), form.getPassword());
 		
@@ -48,9 +48,9 @@ public class LoginController {
 			return toLogin();
 		}
 		
-		model.addAttribute("user", user);
+		session.setAttribute("user", user);
 		
-		return "item_list";
+		return "redirect:/shop";
 	}
 	
 	///////////////////////////////////////////////////
@@ -61,10 +61,10 @@ public class LoginController {
 	 * ログアウト用のメソッドを定義
 	 * @return
 	 */
-	@RequestMapping("/item_list")
+	@RequestMapping("/logout")
 	public String logout() {
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:/shop";
 	}
 	
 }
