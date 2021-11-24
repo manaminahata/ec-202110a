@@ -14,10 +14,17 @@ import com.example.ecommerce_a.repository.ItemRepository;
 public class ItemService {
 	@Autowired
 	private ItemRepository itemRepository;
-	
-	public List<Item> showList(){
+
+	public List<Item> showList() {
 		List<Item> itemList = itemRepository.findAll();
 		return itemList;
 	}
-	
+
+	public List<Item> searchByName(String name) {
+		List<Item> itemList = itemRepository.findByName(name);
+		System.out.println("サービスのアイテムリスト："+itemList);
+		return itemList;
+
+	}
+
 }
