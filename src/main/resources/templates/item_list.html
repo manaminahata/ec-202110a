@@ -5,9 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ラクラクサウナショップ</title>
+<<<<<<< HEAD
     <link href="../static/css/bootstrap.css" th:href="@{css/bootstrap.css}" rel="stylesheet" />
     <link href="../static/css/sauna-shop.css" th:href="@{css/sauna-shop.css}" rel="stylesheet" />
     <!--[if lt IE 9]>
+=======
+    <link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link href="../static/css/sauna-shop.css" th:href="@{/css/sauna-shop.css}" rel="stylesheet" />
+        <!--[if lt IE 9]>
+>>>>>>> parent of 51400f0 (3-1.商品一覧の表示をブラウザの幅に合わせて変更するを実装しました)
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
@@ -145,6 +151,8 @@
     </div>
     <!-- end container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+
+    <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+
   </body>
 </html>
