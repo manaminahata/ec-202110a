@@ -50,7 +50,7 @@
               <a href="order_history.html" class="navbar-link">注文履歴</a
               >&nbsp;&nbsp;
               <a href="login.html" class="navbar-link" th:href="@{/shop/login}">ログイン</a>&nbsp;&nbsp;
-              <a href="item_list.html" class="navbar-link" th:href="@{/shop/logout}">ログアウト</a>
+   	           <a href="item_list.html" class="navbar-link" th:href="@{/shop/logout}">ログアウト</a>
             </p>
           </div>
           <!-- /.navbar-collapse -->
@@ -75,20 +75,21 @@
               <div class="panel-title">商品を検索する</div>
             </div>
             <div class="panel-body">
-              <form method="post" action="#" class="form-horizontal">
+              <form method="post" action="#" th:action="@{/shop/search-item-by-name}" class="form-horizontal">
                 <div class="form-group">
-                  <label for="code" class="control-label col-sm-2"
+                  <label for="name" class="control-label col-sm-2"
                     >商品名</label
                   >
                   <div class="col-sm-9">
                     <input
                       type="text"
-                      name="code"
-                      id="code"
+                      name="searchingName"
+                      id="searchingName"
                       class="form-control input-sm"
                     />
                   </div>
                 </div>
+                <div th:if="${searchMessage}" th:text="${searchMessage}"></div>
                 <div class="text-center">
                   <button type="submit" value="検索" class="btn btn-primary">
                     検索

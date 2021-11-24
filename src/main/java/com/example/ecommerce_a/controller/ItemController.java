@@ -16,8 +16,6 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 	
-	
-	
 	@RequestMapping("")
 	public String showList(Model model) {
 		List<Item> itemList = itemService.showList();
@@ -26,4 +24,17 @@ public class ItemController {
 		return "item_list";
 	}
 
+	@RequestMapping("/search-item-by-name")
+	public String searchItemByName(String searchingName,Model model) {
+		System.out.println("検索ワード："+searchingName);
+		List<Item> itemList = itemService.searchByName(searchingName);
+		System.out.println(itemList.size());
+		if(itemList.size() == 0) {
+			itemList = itemService.showList();
+			model.addAttribute("searchMessage", "該当する商品がありません");
+		}
+
+		model.addAttribute("itemList", itemList);
+		return "item_list";
+	}
 }
