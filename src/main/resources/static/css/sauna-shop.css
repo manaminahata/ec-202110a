@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+div.header {
+	background-color: #0d6efd;
+}
+
 /* サイズをオレンジ〇で囲む */
 span.price {
   /* サイズ指定 */

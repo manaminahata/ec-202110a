@@ -15,6 +15,7 @@
     <![endif]-->
   </head>
   <body>
+  <div class="header">
     <div class="container">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -56,12 +57,12 @@
             </p>
           </div>
           <!-- /.navbar-collapse -->
-        </div>
+          </div>
         <!-- /.container-fluid -->
       </nav>
-
+	</div>
       <!-- search form -->
-      <div class="row">
+    <div class="row justify-content-around">
         <div
           class="
             col-lg-offset-3
@@ -104,9 +105,9 @@
           </div>
         </div>
       </div>
-
+	</div>
       <!-- table -->
-      <div class="row">
+      <div class="row justify-content-around">
         <div
           class="
             table-responsive
@@ -118,6 +119,7 @@
             col-xs-12
           "
         >
+   				<div class="container"> 
          		<div class="row">
                 <div th:each="item:${itemList}" class="col">
                   <a href="item_detail.html">
@@ -126,7 +128,6 @@
                       th:src="${'img_sauna/'+item.imagePath}"
                       class="img-responsive img-rounded item-img-center"
                       width="200"
-                    
                     /> </a
                   ><br />
                   <a href="item_detail.html"><span th:text="${item.name}">じゃがバターベーコン</span></a><br />
@@ -136,6 +137,7 @@
                   ><span th:text="${item.priceM}">&nbsp;&nbsp;2,000円(税抜)</span><br />
                   <span class="price">&nbsp;Ｌ</span
                   ><span th:text="${item.priceL}">&nbsp;&nbsp;3,000円(税抜)</span><br />
+                 </div>
                  </div>
                  </div>
 <!--           <table class="table table-striped item-list-table">
@@ -168,7 +170,7 @@
     <!-- end container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+ <script src="../static/js/bootstrap5.min.js" th:src="@{/js/bootstrap5.min.js}"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
