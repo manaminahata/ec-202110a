@@ -33,7 +33,7 @@ public class SignUpForm {
 	private String address;
 
 	/** 電話番号 */
-	@Pattern(regexp = "^0([0-9]-[0-9]{4}|[0-9]{2}-[0-9]{3}|[0-9]{3}-[0-9]{2}|[0-9]{4}-[0-9])-[0-9]{4}$", message = "電話番号はハイフンありの形式で入力してください。")
+	@Pattern(regexp = "^0[-0-9]{11,12}$", message = "電話番号はハイフンありの形式で入力してください。")
 	private String telephone;
 
 	public String getName() {
