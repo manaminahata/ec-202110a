@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.ecommerce_a.domain.User;
 import com.example.ecommerce_a.form.SignUpForm;
@@ -31,7 +32,7 @@ public class SignUpController {
 	}
 
 	@RequestMapping("/signup")
-	public String signUp(@Validated SignUpForm form,BindingResult result,String confirmationPassword, Model model) {
+	public String signUp(@Validated SignUpForm form,BindingResult result,String confirmationPassword, Model model,RedirectAttributes redirectAttributes) {
 		if(result.hasErrors()){
 			return "sign-up";
 		}
@@ -55,8 +56,8 @@ public class SignUpController {
 		System.out.println(user);
 		signUpService.signUp(user);
 
-		model.addAttribute("message", "会員登録に成功しました。");
-		return "login";
+		redirectAttributes.addFlashAttribute("message", "会員登録に成功しました。");
+		return "redirect:/shop/login";
 	}
 
 }

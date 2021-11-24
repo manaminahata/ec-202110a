@@ -73,6 +73,11 @@
                   >ダミー</label
                 >
                 <div class="form-group">
+					<div class="alert alert-success" th:if="${message}">
+                        <p th:text="${message}">会員登録に成功しました。</p>
+                    </div>
+				</div>
+                <div class="form-group">
                   <label for="inputEmail">メールアドレス:</label>
                   <input
                     type="text"
