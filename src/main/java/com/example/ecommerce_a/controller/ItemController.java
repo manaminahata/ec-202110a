@@ -21,6 +21,7 @@ public class ItemController {
 	@RequestMapping("")
 	public String showList(Model model) {
 		List<Item> itemList = itemService.showList();
+		System.out.println(itemList);
 		model.addAttribute("itemList",itemList);
 		return "item_list";
 	}
