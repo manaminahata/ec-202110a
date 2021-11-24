@@ -4,6 +4,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -12,7 +14,7 @@ import com.example.ecommerce_a.form.SignUpForm;
 import com.example.ecommerce_a.service.SignUpService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/shop")
 public class SignUpController {
 
 	@Autowired
@@ -25,14 +27,24 @@ public class SignUpController {
 
 	@RequestMapping("/to-signup")
 	public String toSignUp() {
-		return "signup";
+		return "sign-up";
 	}
 
 	@RequestMapping("/signup")
-	public String signUp(SignUpForm form, Model model) {
+	public String signUp(@Validated SignUpForm form,BindingResult result,String confirmationPassword, Model model) {
+		if(result.hasErrors()){
+			return "sign-up";
+		}
+
+		if(confirmationPassword.equals(form.getPassword())) {
+			model.addAttribute("passMessage", "パスワードと確認用パスワードが一致していません");
+			return "sign-up";
+		}
+		
+		
 		// データベースに入力されたメールアドレスを含むアカウントがいたら、サインアップ画面に戻す
 		if (!signUpService.checkEmail(form.getEmail()).isEmpty()) {
-			model.addAttribute("message", "このメールアドレスはすでに使用されています。");
+			model.addAttribute("mailMessage", "このメールアドレスはすでに使用されています");
 			return "sign-up";
 		}
 
