@@ -37,6 +37,7 @@ public class UserRepository {
 		SqlParameterSource param = new MapSqlParameterSource().addValue("email",email);
 		
 		return template.query(sql, param,USER_ROW_MAPPER);
+	}
 	/**
 	 * ログイン時にメールアドレスとパスワードが一致しているか確認するためのメソッド
 	 * @param email
