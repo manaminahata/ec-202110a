@@ -78,7 +78,7 @@
               <div class="panel-title">商品を検索する</div>
             </div>
             <div class="panel-body">
-              <form method="post" action="#" th:action="@{/shop/search-item-by-name}" class="form-horizontal">
+              <form method="post" action="#" th:action="@{/shop/search-item-by-name}" class="form-horizontal" th:object="${searchItemByNameForm}">
                 <div class="form-group">
                   <label for="name" class="control-label col-sm-2"
                     >商品名</label
@@ -88,6 +88,7 @@
                       type="text"
                       name="searchingName"
                       id="searchingName"
+                      th:field="*{searchingName}"
                       class="form-control input-sm"
                     />
                   </div>
