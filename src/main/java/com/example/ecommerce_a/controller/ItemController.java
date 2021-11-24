@@ -11,7 +11,7 @@ import com.example.ecommerce_a.domain.Item;
 import com.example.ecommerce_a.service.ItemService;
 
 @Controller
-@RequestMapping("")
+@RequestMapping("/shop")
 public class ItemController {
 	@Autowired
 	private ItemService itemService;
@@ -21,6 +21,7 @@ public class ItemController {
 	@RequestMapping("")
 	public String showList(Model model) {
 		List<Item> itemList = itemService.showList();
+		System.out.println(itemList);
 		model.addAttribute("itemList",itemList);
 		return "item_list";
 	}
