@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ネットでピザ注文</title>
-    <link href="../static/css/bootstrap.css" rel="stylesheet" />
-    <link href="../static/css/sauna-shop.css" th:href="@{css/sauna-shop.css}" rel="stylesheet" />
+    <link href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link href="../static/css/sauna-shop.css" th:href="@{/css/sauna-shop.css}" rel="stylesheet" />
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -70,9 +70,11 @@
             <form method="post" action="item_list.html" th:action="@{/shop/login-result}">
               <fieldset>
                 <legend>ログイン</legend>
-                <label class="control-label" style="color: red" for="inputError" th:text="${errorMessage}"
-                  >ダミー</label
-                >
+                <label th:if="${errorMessage}" class="control-label" style="color: red" for="inputError" th:text="${errorMessage}"
+                  >ダミー</label>
+					<div class="alert alert-success" th:if="${message}">
+                        <span th:text="${message}">会員登録に成功しました。</span>
+                    </div>
                 <div class="form-group">
                   <label for="inputEmail">メールアドレス:</label>
                   <input
@@ -106,12 +108,12 @@
 
       <div class="row">
         <div class="text-center">
-          <a href="register_user.html" th:href="@{/to-signup}">ユーザ登録はこちら</a>
+          <a href="register_user.html" th:href="@{/shop/to-signup}">ユーザ登録はこちら</a>
         </div>
       </div>
     </div>
     <!-- end container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
   </body>
 </html>

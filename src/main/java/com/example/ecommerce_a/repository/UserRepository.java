@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
+
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -23,12 +25,26 @@ public class UserRepository {
 	
 	private final String TABLE_NAME = "users";
 	
+	public void insert(User user) {
+		String sql = "INSERT INTO " + TABLE_NAME +" (name, email, password, zipcode, address, telephone) values(:name, :email, :password, :zipcode, :address, :telephone);";
+		SqlParameterSource param = new BeanPropertySqlParameterSource(user);
+		
+		template.update(sql, param);
+	}
+		
+	public List<User> findByMailAddress(String email) {
+		String sql = "SELECT * FROM " + TABLE_NAME + " WHERE email = :email ;";
+		SqlParameterSource param = new MapSqlParameterSource().addValue("email",email);
+		
+		return template.query(sql, param,USER_ROW_MAPPER);
+	}
 	/**
 	 * ログイン時にメールアドレスとパスワードが一致しているか確認するためのメソッド
 	 * @param email
 	 * @param password
 	 * @return　メールアドレスとパスワードが一致した施設を取得する
 	 */
+
 	public User findByEmailAndPassword(String email, String password) {
 		String sql = "SELECT * FROM " + TABLE_NAME + " WHERE email=:email AND password=:password";
 		SqlParameterSource param = new MapSqlParameterSource().addValue("email", email).addValue("password", password);
@@ -38,6 +54,7 @@ public class UserRepository {
 			return null;
 		}
 		return userList.get(0);
+
 	}
 	
 }
