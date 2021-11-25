@@ -205,7 +205,7 @@
                     <div class="text-center">お名前</div>
                   </td>
                   <td>
-                    <input type="text" />
+                    <input type="text" th:value="${session.user.name}"/>
                   </td>
                 </tr>
                 <tr>
@@ -213,7 +213,7 @@
                     <div class="text-center">メールアドレス</div>
                   </td>
                   <td>
-                    <input type="text" />
+                    <input type="text" th:value="${session.user.email}"/>
                   </td>
                 </tr>
                 <tr>
@@ -221,7 +221,7 @@
                     <div class="text-center">郵便番号</div>
                   </td>
                   <td>
-                    <input type="text" />&nbsp;&nbsp;<button>住所検索</button>
+                    <input type="text" th:value="${session.user.zipcode}"/>&nbsp;&nbsp;<button>住所検索</button>
                   </td>
                 </tr>
                 <tr>
@@ -229,7 +229,7 @@
                     <div class="text-center">住所</div>
                   </td>
                   <td>
-                    <input type="text" />
+                    <input type="text" th:value="${session.user.addrss}"/>
                   </td>
                 </tr>
                 <tr>
@@ -237,7 +237,7 @@
                     <div class="text-center">電話番号</div>
                   </td>
                   <td>
-                    <input type="text" />
+                    <input type="text" th:value="${session.user.telephone}"/>
                   </td>
                 </tr>
                 <tr>
